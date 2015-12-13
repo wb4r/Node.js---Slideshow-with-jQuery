@@ -132,7 +132,7 @@
       <p><time>Taken on {{created_at}}</time></p>
     </div>
     <div class="col-sm-4 col-sm-offset-4 actions">
-      <a href="/photos/like" data-id="{{id}}" class="btn btn-lg btn-primary">
+      <a href="/photos/like" data-id="{{id}}" class="btn btn-lg btn-primary" param="like">
         <span class="glyphicon glyphicon-heart"></span>
         {{#if likes}}
         {{likes}}
@@ -141,7 +141,7 @@
         {{/if}}
         Likes
       </a>
-      <a href="/photos/favorite" id="{{id}}" class="btn btn-lg btn-success">
+      <a href="/photos/favorite" data-id="{{id}}" class="btn btn-lg btn-success" param="favorite">
         <span class="glyphicon glyphicon-star-empty"></span>
         {{#if favorites}}
         {{favorites}}
@@ -159,7 +159,7 @@
     {{/each}}
   </script>
 
-  <script id="comment" type="text/x-handlebars" data-type="partial">
+  <script id="comment" type="text/x-handlebars">
     {{#each comment}}
     <li>
       <article>

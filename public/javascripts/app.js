@@ -53,7 +53,7 @@ $(function() {
     })
   }
 
-  // EVENTS -------------------------------------------
+  // EVENT NEXT/PREV CLICK -------------------------------------------
   var slideshow = {
     $el: $("#slideshow"),
     duration: 500,
@@ -82,6 +82,7 @@ $(function() {
       this.renderPhotoContent($next.attr("data-id"));
     },
     renderPhotoContent: function(idx) {
+      $("[name=photo_id]").val(idx);
       renderPhotoInformation(idx - 1);
       getCommentsFor(idx)
     },
@@ -93,5 +94,45 @@ $(function() {
       this.bind();
     }
   };
+
+  /// PHOTO INFORMATION BUTTONS: Like and Favorite
+  $("#photo_info_container").on("click", ".actions a", function(e) {
+    e.preventDefault();
+    var $e = $(e.target),
+        $param = getTheActionInParamValue($e);
+
+    $.ajax({
+      url: $e.attr("href"),
+      type: "post",
+      data: "photo_id=" + $e.attr("data-id"),
+      success: function(json) {
+        if ($e.attr("param") === "like") {
+          $e.html("<span class='glyphicon glyphicon-heart'></span>" + " " + json.total + " " + "likes")
+        } else if ($e.attr("param") === "favorite") {
+          $e.html("<span class='glyphicon glyphicon-star-empty'></span>" + " " + json.total + " " + "favorites")
+        }
+      }
+    });
+  });
+
+  function getTheActionInParamValue(element) {
+    //not working inside $.ajax !!
+    return element.attr("param");
+  }
+
+  // ADDING NEW COMMENTS
+  $("form").on("submit", function(e) {
+    e.preventDefault();
+    var $f = $(this);
+
+    $.ajax({
+      url: $f.attr("action"),
+      type: $f.attr("method"),
+      data: $f.serialize(),
+      success: function(json) {
+        $("#comments_container ul").append(templates.comment({ comment: json}));
+      }
+    });
+  });
 
 });
