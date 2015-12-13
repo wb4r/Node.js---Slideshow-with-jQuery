@@ -1,0 +1,143 @@
+
+body {
+  background-color: #525252;
+}
+
+.main-content-col {
+    background-color: white;
+    min-height: 1500px;
+    border-radius: 0.5%;
+    margin-bottom: 100px;
+}
+
+h1 {
+    font-weight: bold;
+    margin: 35px;
+    color: #db7231;
+}
+
+h2 {
+  font-size: 3.3rem;
+  font-weight: bold;
+}
+
+figcaption {
+    font-size: 1.8rem;
+    font-weight: bold;
+    background: gray;
+    padding: 15px;
+}
+
+#slides img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+#slideshow {
+  position: relative;
+}
+
+#slideshow a.prev,
+#slideshow a.next {
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+    width: 48px;
+    height: 80px;
+    margin-top: -40px;
+    text-indent: -8685px;
+    background: transparent url("../images/icon_pager.png") 0 0 no-repeat;
+}
+
+#slideshow a.prev {
+  left: 30px;
+}
+
+#slideshow a.next {
+  right: 30px;
+  background-position: 100% 0;
+}
+
+#slides figure + figure {
+  display: none;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.blog-title {
+  margin-top: 25px;
+}
+
+.actions {
+  margin-top: 55px;
+}
+
+.btn {
+  margin-left: 5px;
+}
+
+.comments {
+  margin-bottom: 75px;
+}
+
+p {
+  font-size: 1.6rem;
+}
+
+h3,
+time,
+p {
+  margin: 25px;
+}
+
+#comments_id {
+  padding-top: 150px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.outter-container {
+  margin-top: 200px;
+  /*margin-top: 250px;*/
+}
+
+#result_number {
+  font-size: 7rem;
+  color: #db7231;
+  margin-left: 20px;
+  margin-bottom: 55px;;
+}
+
+.form-control {
+  margin-top: 10px;
+  /*max-width: 150px;
+  height: 55px;
+  display: inline;
+  margin-left: 20px;
+  margin-bottom: 25px;
+  font-size: 2rem;*/
+}
+
+#operator,
+#show_result_button {
+  max-width: 85px;
+}
+
+#show_result_button {
+  margin-top: 10px;
+}

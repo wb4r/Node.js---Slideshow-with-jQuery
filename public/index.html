@@ -1,0 +1,180 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<script src="javascripts/app.js"></script>
+    <script src="javascripts/handlebars-v4.0.5.js"></script>
+	<link rel="stylesheet" href="stylesheets/stylesheet.css">
+	<title>myPhoto Gallery</title>
+</head>
+<body>
+	<div class="container-fluid outter-container">
+		<div class="row">
+			<div class="main-content-col col-sm-8 col-sm-offset-2">
+          <h1>Willem T's Photos</h1>
+          <div id="slideshow" class="col-sm-12">
+                <div id="slides">
+
+                    <!-- <figure data-id="1">
+                        <img src="http://placehold.it/1280x1024"/>
+                        <figcaption>
+                            Lorem ipsum dolor sit amet, dolore magna aliqua
+                        </figcaption>
+                    </figure>
+                    <figure data-id="2">
+                        <img src="http://placehold.it/1280x1024/ffffff/0066cc"/>
+                        <figcaption>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
+                        </figcaption>
+                    </figure>
+                    <figure data-id="3">
+                        <img src="http://placehold.it/1280x1024/0066cc/ffffff"/>
+                        <figcaption>
+                            Adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
+                        </figcaption>
+                    </figure> -->
+
+                </div>
+                <ul>
+                  <li>
+                    <a class="prev" href="#">Prev</a>
+                  </li>
+                  <li>
+                    <a class="next" href="#">Next</a>
+                  </li>
+                </ul>
+            </div>
+          <section>
+            <div class="col-sm-10 comments">
+            <header>
+              <div id="photo_info_container">
+
+              <!-- <div class="col-sm-4 blog-title">
+                <h2>City Flights!</h2>
+                <small><p>Reading article on</small></p>
+                <small><time id="time_article"></time></small>
+              </div>
+              <div class="col-sm-4 col-sm-offset-4 actions">
+                <a href="/photos/like" data-id="1" data-property="likes" class="btn btn-lg btn-primary">
+                  <span class="glyphicon glyphicon-heart"></span>
+                  5
+                  Likes
+                </a>
+                <a href="/photos/favorite" data-id="1" data-property="favorites" class="btn btn-lg btn-success">
+                  <span class="glyphicon glyphicon-star-empty"></span>
+                  2
+                  Favorites
+                </a>
+              </div> -->
+              </div>
+            </header>
+
+              <div id="comments_id">
+                <h3>Comments</h3>
+                <ul>
+                  <div id="comments_container">
+                    <ul>
+
+                  <!-- <li>
+                    <article>
+                      <figure>
+                        <img src="http://gravatar.com/avatar/9f6f9c0b100d371267f07a12f73edf9d" alt="" />
+                      </figure>
+                      <header>
+                        <h3><strong>Shane Riley</strong></h3>
+                        <p><small><time>Posted on 31/3/2015</time></small></p>
+                      </header>
+                      <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                      </p>
+                    </article>
+                  </li> -->
+                    </ul>
+                  </div>
+                </ul>
+
+                <form action="/comments/new" method="post">
+                  <fieldset class="form-group">
+                    <input type="hidden" name="photo_id" value="1">
+                    <h3>Your Comment</h3>
+                    <dl>
+                      <!-- <dt><label for="name">Your Name</label></dt> -->
+                      <dd><input type="text" name="name" id="name" placeholder="Name" class="form-control"></dd>
+                      <!-- <dt><label for="email">Email Address</label></dt> -->
+                      <dd><input type="email" name="email" id="email" placeholder="you@example.com" class="form-control"></dd>
+                      <!-- <dt><label for="body">Comment</label></dt> -->
+                      <dd><textarea rows="6" cols="40" name="body" id="body" placeholder="Comment here" class="form-control"></textarea></dd>
+                    </dl>
+                    <input type="submit" value="Post Comment" class="btn btn-default btn-lg">
+                  </fieldset>
+                </form>
+              </div>
+            </div>
+          </section>
+      </div>
+		</div>
+	</div>
+
+  <script id="photos" type="text/x-handlebars">
+    {{#each photos}}
+      <figure data-id="{{id}}">
+        <img src="{{src}}"/>
+        <figcaption>{{caption}}</figcaption>
+      </figure>
+    {{/each}}
+  </script>
+
+  <script id="photo_information" type="text/x-handlebars">
+    <div class="col-sm-4 blog-title">
+      <h2>{{title}}</h2>
+      <p><time>Taken on {{created_at}}</time></p>
+    </div>
+    <div class="col-sm-4 col-sm-offset-4 actions">
+      <a href="/photos/like" data-id="{{id}}" class="btn btn-lg btn-primary">
+        <span class="glyphicon glyphicon-heart"></span>
+        {{#if likes}}
+        {{likes}}
+        {{else}}
+        0
+        {{/if}}
+        Likes
+      </a>
+      <a href="/photos/favorite" id="{{id}}" class="btn btn-lg btn-success">
+        <span class="glyphicon glyphicon-star-empty"></span>
+        {{#if favorites}}
+        {{favorites}}
+        {{else}}
+        0
+        {{/if}}
+        Favorites
+      </a>
+    </div>
+  </script>
+
+  <script id="comments" type="text/x-handlebars">
+    {{#each comments}}
+    {{> comment}}
+    {{/each}}
+  </script>
+
+  <script id="comment" type="text/x-handlebars" data-type="partial">
+    {{#each comment}}
+    <li>
+      <article>
+        <figure>
+          <img src="{{gravatar}}" />
+        </figure>
+        <header>
+          <h3><strong>{{name}}</strong></h3>
+          <p><small><time>{{date}}</time></small></p>
+        </header>
+        <p>{{body}}</p>
+      </article>
+    </li>
+    {{/ each}}
+  </script>
+
+</body>
+</html>
