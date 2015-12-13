@@ -83,6 +83,7 @@ $(function() {
     },
     renderPhotoContent: function(idx) {
       renderPhotoInformation(idx - 1);
+      getCommentsFor(idx)
     },
     bind: function() {
       this.$el.find("a.prev").on("click", $.proxy(this.prevSlide, this));
